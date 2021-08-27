@@ -1,5 +1,5 @@
-import toDoList from "./TodoReducers";
+import todoReducers from "./TodoReducers";
 import { combineReducers } from "redux";
 
-const rootReducers = combineReducers({ toDoList });
+const rootReducers = combineReducers({ todoReducers });
 export default rootReducers;

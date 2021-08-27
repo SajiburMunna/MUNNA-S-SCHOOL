@@ -8,9 +8,10 @@ export const addToDo = (data) => {
   };
 };
 
-export const deleteToDo = () => {
+export const deleteToDo = (id) => {
   return {
     type: "DELETETODO",
+    id,
   };
 };
 

@@ -1,14 +1,14 @@
-const initalState = {
+const initialData = {
   list: [],
 };
-const toDoList = (state = initalState, action) => {
-  // eslint-disable-next-line default-case
+
+const todoReducers = (state = initialData, action) => {
   switch (action.type) {
     case "ADDTODO":
-      const { id, data } = action.payload;
+      const { data, id } = action.payload;
       return {
         ...state,
-        data: [
+        list: [
           ...state.list,
           {
             id: id,
@@ -16,9 +16,22 @@ const toDoList = (state = initalState, action) => {
           },
         ],
       };
+
+    case "DELETETODO":
+      const newList = state.list.filter((elm) => elm.id !== action.id);
+      return {
+        ...state,
+        list: newList,
+      };
+
+    case "REMOVETODO":
+      return {
+        ...state,
+        list: [],
+      };
     default:
       return state;
   }
 };
 
-export default toDoList;
+export default todoReducers;
