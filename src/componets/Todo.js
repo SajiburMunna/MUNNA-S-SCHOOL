@@ -34,7 +34,7 @@ const Todo = () => {
       {list.map((p) => (
         <div>
           <h3>
-            {p.data}{" "}
+            {p.data}
             <button onClick={() => dispatch(deleteToDo(p.id))}>✂</button>
           </h3>
         </div>
