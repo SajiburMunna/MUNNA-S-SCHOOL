@@ -1,9 +1,9 @@
-import Todo from "./componets/Todo";
+import Home from "./componets/Home.js";
 
 function App() {
   return (
     <div>
-      <Todo></Todo>
+      <Home></Home>
     </div>
   );
 }

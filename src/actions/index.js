@@ -1,9 +1,12 @@
-export const addToDo = (data) => {
+export const addToDo = (id, name, bangla, english, math) => {
   return {
     type: "ADDTODO",
     payload: {
-      id: new Date().getTime().toString(),
-      data: data,
+      id: id,
+      std_name: name,
+      bangla: bangla,
+      english: english,
+      math: math,
     },
   };
 };
@@ -18,5 +21,10 @@ export const deleteToDo = (id) => {
 export const removeToDo = () => {
   return {
     type: "REMOVETODO",
+  };
+};
+export const passed = () => {
+  return {
+    type: "PASSED",
   };
 };
