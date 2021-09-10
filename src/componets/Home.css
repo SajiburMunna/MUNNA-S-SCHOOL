@@ -85,8 +85,12 @@ h5 {
 .fail-h5 {
   color: red;
 }
+
+.plus-h5 {
+  color: green;
+}
 .clear-button {
-  margin-left: 300px;
+  margin-left: 195px;
   width: 100px;
   height: 70px;
 
@@ -94,4 +98,23 @@ h5 {
   cursor: pointer;
   font-weight: bold;
   color: red;
+}
+
+.details-div {
+  text-align: left;
+  display: flex;
+  margin-left: 50px;
+}
+.total-std-co {
+  display: flex;
+  margin-bottom: 20px;
+}
+.logo-img {
+  width: 30px;
+  height: 30px;
+}
+.a-plus-co {
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: 10px;
 }

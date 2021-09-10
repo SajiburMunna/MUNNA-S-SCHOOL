@@ -6,7 +6,7 @@ import { addToDo, deleteToDo, removeToDo } from "../actions";
 import "../App.css";
 
 import "antd/dist/antd.css";
-import "./Todo.css";
+import "./Home.css";
 
 import { Table } from "antd";
 import "../Image/Header.png";
@@ -24,7 +24,7 @@ import mat from "../Image/math.png";
 import clear from "../Image/clear.png";
 import plus from "../Image/plus.png";
 
-const Todo = () => {
+const Home = () => {
   const [id, setId] = useState(null);
   const [name, setName] = useState(" ");
   const [bangla, setBangla] = useState(" ");
@@ -168,6 +168,21 @@ const Todo = () => {
       },
     },
     {
+      title: "Result",
+      dataIndex: "result",
+      render(text, record) {
+        return {
+          props: {
+            style: {
+              color: text === "PASSED" ? "green" : "red",
+              fontWeight: text === "PASSED" ? "bold" : "bold",
+            },
+          },
+          children: <div>{text}</div>,
+        };
+      },
+    },
+    {
       title: "Delete",
       dataIndex: "id",
       render: (id) => (
@@ -199,6 +214,15 @@ const Todo = () => {
   const totalPassed = list.filter(
     (p) => p.bangla >= 40 && p.english >= 40 && p.math >= 40
   );
+  const totalfail = list.filter(
+    (p) => p.bangla <= 40 || p.english <= 40 || p.math <= 40
+  );
+
+  const passed = totalPassed.map((obj) => ({ ...obj, result: "PASSED" }));
+  const failed = totalfail.map((obj) => ({ ...obj, result: "FAILED" }));
+
+  const total = [...passed, ...failed];
+  console.log(total);
 
   const total_A_Plus = list.filter(
     (p) => p.bangla >= 80 && p.english >= 80 && p.math >= 80
@@ -270,32 +294,20 @@ const Todo = () => {
       </div>
       <div>
         <h1>ALL STUDENT'S SCORE BOARD</h1>
-        <div style={{ textAlign: "left", display: "flex", marginLeft: "50px" }}>
+        <div className="details-div">
           <div>
             <div style={{ display: "flex", marginBottom: "20px" }}>
-              <img
-                style={{ width: "30px", height: "30px" }}
-                src={students}
-                alt=""
-              ></img>
+              <img className="logo-img" src={students} alt=""></img>
               <h5>TOTAL STUDENTS : {list.length}</h5>
             </div>
 
             <div style={{ display: "flex", marginBottom: "20px" }}>
-              <img
-                style={{ width: "30px", height: "30px" }}
-                src={passedstd}
-                alt=""
-              ></img>
+              <img className="logo-img" src={passedstd} alt=""></img>
               <h5> TOTAL PASSED STUDENTS : {totalPassed.length}</h5>
             </div>
 
             <div style={{ display: "flex", marginBottom: "20px" }}>
-              <img
-                style={{ width: "30px", height: "30px" }}
-                src={fail}
-                alt=""
-              ></img>
+              <img className="logo-img" src={fail} alt=""></img>
 
               <h5 className="fail-h5 ">
                 TOTAL FAILED STUDENTS [ Less 40% Marks ] :{" "}
@@ -305,28 +317,16 @@ const Todo = () => {
           </div>
           <div style={{ marginLeft: "50px" }}>
             <div style={{ display: "flex", marginBottom: "20px" }}>
-              <img
-                style={{ width: "30px", height: "30px" }}
-                src={bng}
-                alt=""
-              ></img>
+              <img className="logo-img" src={bng} alt=""></img>
               <h5> BENGALI-TOTAL PASSED STUDENTS : {banglaSub.length}</h5>
             </div>
             <div style={{ display: "flex", marginBottom: "20px" }}>
-              <img
-                style={{ width: "30px", height: "30px" }}
-                src={eng}
-                alt=""
-              ></img>
+              <img className="logo-img" src={eng} alt=""></img>
               <h5> ENGLISH-TOTAL PASSED STUDENTS : {englishSub.length}</h5>
             </div>
 
             <div style={{ display: "flex", marginBottom: "20px" }}>
-              <img
-                style={{ width: "30px", height: "30px" }}
-                src={mat}
-                alt=""
-              ></img>
+              <img className="logo-img" src={mat} alt=""></img>
               <h5> MATHEMATICS-TOTAL PASSED STUDENTS : {mathSub.length}</h5>
             </div>
           </div>
@@ -337,23 +337,17 @@ const Todo = () => {
               marginLeft: "10px",
             }}
           >
-            <img
-              style={{ width: "30px", height: "30px" }}
-              src={plus}
-              alt=""
-            ></img>
-            <h5>Total A+ : {total_A_Plus.length} </h5>
+            <img className="logo-img" src={plus} alt=""></img>
+            <h5 className="plus-h5">
+              Total A+ [ 80% Marks ] : {total_A_Plus.length}{" "}
+            </h5>
           </div>
           <div style={{ display: "flex" }}>
             <button
               className="clear-button"
               onClick={() => dispatch(removeToDo())}
             >
-              <img
-                style={{ width: "30px", height: "30px", display: "cover" }}
-                src={clear}
-                alt=""
-              ></img>
+              <img className="logo-img" src={clear} alt=""></img>
               ClearBoard
             </button>
           </div>
@@ -361,10 +355,10 @@ const Todo = () => {
       </div>
 
       <div>
-        <Table columns={columns} dataSource={list} />
+        <Table columns={columns} dataSource={total} />
       </div>
     </>
   );
 };
 
-export default Todo;
+export default Home;
