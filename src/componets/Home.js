@@ -22,6 +22,7 @@ import bng from "../Image/bng.png";
 import eng from "../Image/eng.png";
 import mat from "../Image/math.png";
 import clear from "../Image/clear.png";
+import plus from "../Image/plus.png";
 
 const Todo = () => {
   const [id, setId] = useState(null);
@@ -199,6 +200,10 @@ const Todo = () => {
     (p) => p.bangla >= 40 && p.english >= 40 && p.math >= 40
   );
 
+  const total_A_Plus = list.filter(
+    (p) => p.bangla >= 80 && p.english >= 80 && p.math >= 80
+  );
+
   return (
     <>
       <div>
@@ -324,6 +329,20 @@ const Todo = () => {
               ></img>
               <h5> MATHEMATICS-TOTAL PASSED STUDENTS : {mathSub.length}</h5>
             </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              marginBottom: "20px",
+              marginLeft: "10px",
+            }}
+          >
+            <img
+              style={{ width: "30px", height: "30px" }}
+              src={plus}
+              alt=""
+            ></img>
+            <h5>Total A+ : {total_A_Plus.length} </h5>
           </div>
           <div style={{ display: "flex" }}>
             <button
