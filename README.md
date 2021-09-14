@@ -11,7 +11,7 @@ Munna's School is a dynamically result-generator application of students. In thi
 5.Clear score board.
 
 ## Technologies Used :
-◻React js.
-◻Redux.
-◻Ant-Design.
+◻React js.<br />
+◻Redux.<br />
+◻Ant-Design.<br />
 ◻Sweet Alert.
