@@ -3,6 +3,7 @@ Munna's School is a dynamically result-generator application of students. In thi
 
 
 ## Functionalities :
+
 ✅User Input Data <br />
 1.Dynamiclly generate students result.<br />
 2.Search students result by id.<br />
